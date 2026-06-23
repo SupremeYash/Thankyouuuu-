@@ -12,11 +12,15 @@ let i = 0;
 // CURTAIN OPEN ON BUTTON CLICK
 // ==========================
 
-const openBtn = document.getElementById("openBtn");
+const openBtn = document.getElementById("openBtn").addEventListener("click", () => {
 
-openBtn.addEventListener("click", () => {
+    const music = document.getElementById("bgMusic");
 
-    openBtn.style.display = "none";
+    music.volume = 0.5;
+
+    music.play()
+    .then(() => console.log("Music playing"))
+    .catch(err => console.log(err));
 
     document
     .querySelector(".curtain-left")
@@ -26,16 +30,11 @@ openBtn.addEventListener("click", () => {
     .querySelector(".curtain-right")
     .classList.add("open-right");
 
-    document
-    .querySelector(".letter-container")
-    .style.opacity = "1";
+    document.getElementById("openBtn").style.display = "none";
 
-    const music =
-    document.getElementById("bgMusic");
+    document.querySelector(".letter-container").style.opacity = "1";
 
-    music.play().catch(()=>{});
-
-    setTimeout(typeWriter,1800);
+    setTimeout(typeWriter,1500);
 
 });
 
